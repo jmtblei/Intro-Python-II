@@ -54,19 +54,13 @@ newPlayer = Player(name, room['outside'])
 #
 # If the user enters "q", quit the game.
 
-controls = ''
-while str(controls) != 'q':
-    print(newPlayer.__str__())
+while True:
+    print(newPlayer)
     controls = input("Navigate using WASD or Q to exit. ")
-    try:
-        if str(controls) == 'w': #w is north/up
-            newPlayer.room = newPlayer.room .n_to
-        elif str(controls) == 'a': #a is east/left
-            newPlayer.room = newPlayer.room .e_to
-        elif str(controls) == 's': #s is south/down
-            newPlayer.room = newPlayer.room .s_to
-        elif str(controls) == 'd': #d is west/right
-            newPlayer.room = newPlayer.room .w_to
-    except:
-        print("This is a dead end.")
-print(f"{newPlayer.name} has quit") 
+    if controls == 'q':
+        print(f"{newPlayer.name} has quit")
+        break
+    elif controls in ['w', 'a', 's', 'd']:
+        newPlayer.move(controls)
+    else:
+        print(f"Invalid command input. ")
