@@ -1,5 +1,7 @@
 from room import Room
 from player import Player
+from item import Item
+from item import Equipment
 
 # Declare all the rooms
 
@@ -21,6 +23,27 @@ to north. The smell of gold permeates the air."""),
 chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
+
+#Declare items
+
+# item = {
+#     'torch': Item("Torch", "A burning torch, it lights up the area granting you more vision."),
+#     'stick': Weapon("Stick", "A long stick; you can poke things with it.", "weapon", 5),
+#     'longsword': Weapon("Long Sword", "A sharp long sword; this can do some damage.", "weapon", 50),
+#     'woodenshield': Armor("Wooden Shield", "A wooden shield; it's pretty durable.", "armor", 30),
+#     'oldboots': Armor("Old Boots", "A pair of old boots; at least they fit!", "armor", 10)
+# }
+torch = Item("Torch", "A burning torch, it lights up the area granting you more vision."),
+stick = Equipment("Stick", "A long stick; you can poke things with it.", 5),
+longsword = Equipment("Long Sword", "A sharp long sword; this can do some damage.", 50),
+woodenshield = Equipment("Wooden Shield", "A wooden shield; it's pretty durable.", 30),
+oldboots = Equipment("Old Boots", "A pair of old boots; at least they fit!", 10)
+
+room['outside'].items.append(torch)
+room['foyer'].items.append(stick)
+room['overlook'].items.append(oldboots)
+room['narrow'].items.append(woodenshield)
+room['treasure'].items.append(longsword)
 
 
 # Link rooms together
@@ -56,11 +79,13 @@ newPlayer = Player(name, room['outside'])
 
 while True:
     print(newPlayer)
-    controls = input("Navigate using WASD or Q to exit. ")
+    controls = input("What would you like to do? ")
     if controls == 'q':
         print(f"{newPlayer.name} has quit")
         break
+    elif controls == 'h':
+        print("Navigate using WASD\n Press E to examine the room\n Press Q to exit the game")
     elif controls in ['w', 'a', 's', 'd']:
         newPlayer.move(controls)
     else:
-        print(f"Invalid command input. ")
+        print(f"Invalid command input. press H for help")
