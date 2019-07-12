@@ -11,7 +11,7 @@ class Room:
         self.w_to = None
         self.items = []
     def __str__(self):
-        return f"{self.name}. {self.description}"
+        return f"{self.name}. {self.description}\n"
     def next(self, direction):
         if direction == 'w': #w is north/up
             return self.n_to

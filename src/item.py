@@ -6,10 +6,7 @@ class Item:
         return self.name
     def canEquip(self):
         return False
-
-class Equipment(Item):
-    def __init__(self, name, description, powerLevel):
-        super().__init__(name, description)
-        self.powerLevel = powerLevel
-    def canEquip(self):
-        return True
+    def takeItem(self):
+        print(f"You picked up {self.name}\n----------")
+    def dropItem(self):
+        print(f"You discarded {self.name}\n----------")
